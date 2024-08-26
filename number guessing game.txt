@@ -1,0 +1,31 @@
+import random
+import math
+
+
+def game():
+    lower = int(input("Enter lower number: "))
+    upper = int(input("Enter upper number: "))
+    x = random.randint(lower, upper)
+    count = 0
+    print(f"you have {round(math.log(upper - lower + 1, 2))} chances to guess the number")
+    while count < math.log(upper - lower + 1, 2):
+        count += 1
+        guess = int(input("Enter guess: "))
+
+        if x == guess:
+            print("congrats! you guessed the number in " + str(count) + " tries")
+
+            break
+        elif x < guess:
+            print("your guess was too high")
+            print("try again")
+        elif x > guess:
+            print("your guess was too low")
+            print("try again")
+
+    if count >= math.log(upper - lower + 1, 2):
+        print(f"the number was {x}")
+        print("better luck next time")
+
+
+game()
